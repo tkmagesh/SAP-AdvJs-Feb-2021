@@ -31,15 +31,29 @@ var add = (function(){
     }
 })();
 
-Write a function 'memoize' using which one can create a memoized version of ANY function with ANY number of arguments
+/* 
+Write a function 'memoize' using which one can create a memoized version of ANY function with ANY number of arguments 
+*/
+
+//solutio
+function memoize(fn){
+    var cache = {};
+    return function(){
+        var key = JSON.stringify(arguments);
+        if (!cache.hasOwnProperty(key)){
+            cache[key] = fn.apply(this, arguments);
+        }
+        return cache[key]
+    }
+}
 
 function subtract(x,y){
-    cosole.log('processing ', x , ' and ', y);
+    console.log('processing ', x , ' and ', y);
     return x + y;
 }
 
 function multiply(x,y){
-    cosole.log('processing ', x , ' and ', y);
+    console.log('processing ', x , ' and ', y);
     return x * y;
 }
 
