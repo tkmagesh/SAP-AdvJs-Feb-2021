@@ -111,5 +111,18 @@ Implicit values in a function
             arguments.length 
             arguments[0]
             arguments[1]
-            
+
     - this
+
+
+It DOES NOT matter where a function is OR who owns the function
+what matters is HOW the function is invoked
+
+Function Invocation Patterns
+    - When a function is invoked as a method of an object (obj)
+        this -> obj
+    - When a function is invoked as a 'function'
+        this -> global object (window in the browser)
+        
+    - Using the 'call' method of the function
+    - Using the 'apply' method of the function
