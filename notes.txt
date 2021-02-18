@@ -1,0 +1,115 @@
+Day-01
+================================================================
+
+Line Oriented (Basic, Fortran)
+Procedural (C, COBOL)
+Object Based (Visual Basic)
+Object Oriented (C#, Java)
+Functional (F#, Haskell)
+
+Functional & Object Based
+
+Object Based
+    Support for Object
+    Object = Encapsulates State & Behavior
+
+Functional
+    Functions are first class citizen
+    Functions can be treated like data (object)
+
+Data Types
+    string
+    number
+    boolean
+    object
+    function
+    undefined
+
+Variadic Functions
+
+Functions can be created like objects (Expression syntax & 'new' syntax)
+Functions can have attributes like objects (state)
+
+Support for Higher Order functions
+    Functions can be passed as arguments to other functions
+    Functions can be returned as return values 
+
+In JavaScript -> Functions are Objects
+    - Functions are called as 'Callable Objects'
+
+A method = an attribute whose value is a function
+
+
+Dynamic & Static
+
+Stronly typed & loosely typed
+
+
+JavaScript is an Object Based, Functional, Dynamic & loosely typed language
+
+class Employee{
+    public int id;
+    public string name;
+    public string city;
+}
+
+Employee emp = new Employee();
+emp.id = 100;
+emp.name = "Magesh";
+emp.city = "Bangalore";
+
+emp.salary = 10000;
+
+
+int x = 100;
+
+x = "abc";
+
+public static class Calculator{
+    public static int add(int x, int y){
+        return x + y;
+    }
+}
+
+string result = Calculator.add(10,20);
+
+
+
+function add(x, y){
+    if (typeof x !== 'number' || typeof y !== 'number')
+        throw new Error('Invalid argument(s)');
+    return x + y;
+}
+
+add(10,20)
+add(10,'20')
+add(10,'abc')
+add([10,20], [30,40])
+add([10,20], [30,'40'])
+add([10,20], [30,'abc'])
+add([10,20], [30,[40,'abc']])
+add(function(){ return 10; }, function(){ return 20; })
+add(function(){ return 10; }, function(){ return '20'; })
+add(function(){ return 10; }, function(){ return 'abc'; })
+add(function(){ return [10,20]; }, function(){ return [30,[40,'abc']]; })
+add(10)
+add()
+add(10,20,30,40,50)
+
+
+jQuery = $
+
+$(domNode)
+$([dn1, dn2])
+$('#id')
+$(fn)
+
+
+Implicit values in a function
+    - arguments
+        - array like object with all the values passed to function
+            arguments.length 
+            arguments[0]
+            arguments[1]
+            
+    - this
