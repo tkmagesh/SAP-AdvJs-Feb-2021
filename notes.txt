@@ -123,6 +123,22 @@ Function Invocation Patterns
         this -> obj
     - When a function is invoked as a 'function'
         this -> global object (window in the browser)
-        
+
     - Using the 'call' method of the function
     - Using the 'apply' method of the function
+    - As an Immediately Invoked Function Expression (IIFE)
+    - Using the 'new' keyword (constructor function)
+
+Closures
+
+Constructor Functions (class)
+    - invoked using the 'new' keyword
+        * this -> assigned a new object
+        * this -> returned by default
+
+Inheritance
+    Prototypal Inheritance
+    One object acts as a base object for a family of objects
+    Uses prototype hopping to resolve an attribute
+        Prototype hopping happens ONLY when an attribute value is READ
+        Prototype hopping DOESNOT happen when a new value is WRITTEN in the attribute
