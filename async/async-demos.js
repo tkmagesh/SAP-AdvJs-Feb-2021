@@ -92,3 +92,6 @@ var p1 = addAsyncPromise(x,y);
 var p2 = divideAsyncPromise(x,y);
 Promise.allSettled([p1, p2])
     .then(([addResult, divideResult]) => console.log(addResult, divideResult));
+
+
+

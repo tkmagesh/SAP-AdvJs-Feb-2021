@@ -186,3 +186,31 @@ ES6 (EcmaScript 6 / ES2015 / ESNext )
 
 15. generator functions
         functions whose execution can be suspended and resumed
+
+    function *getEvenNos(){
+        yield 2;
+        yield 4;
+        yield 6;
+        yield 8;
+        return 10;
+    }
+    var iter = getEvenNos()
+
+16. promise
+
+http://es6-features.org
+
+Async Operations
+    That is initiated but not waited for completion
+
+Trailing Commas
+    var nos = [10,20,30,]
+
+Object.values() and Object.entries()
+Nullish Coalescing Operator (??)
+
+Profiling
+https://auth0.com/blog/four-types-of-leaks-in-your-javascript-code-and-how-to-get-rid-of-them/
+
+tkmagesh77@gmail.com
++91-99019-11221
