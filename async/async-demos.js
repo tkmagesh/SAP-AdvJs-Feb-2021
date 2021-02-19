@@ -34,4 +34,26 @@
 
     globalThis['addAsyncClient'] = addAsyncClient;
 
+    function addAsyncPromise(x,y){
+        console.log(`   [@service] processing ${x} and ${y}`);
+        var p = new Promise(function(resolveFn, rejectFn){
+            setTimeout(function(){ 
+                var result = x + y;
+                console.log(`   [@service] return result`);
+                resolveFn(result);
+            }, 5000);
+        });
+        return p;
+    }
+
+    function addAsyncPromiseClient(x,y){
+        console.log(`[@client] triggering the service`);
+        var p = addAsyncPromise(100,200);
+        p.then(function(result){ 
+            console.log(`[@client] result = ${result}`);
+        });
+    }
+
+    globalThis['addAsyncPromiseClient'] = addAsyncPromiseClient;
+
 })();
