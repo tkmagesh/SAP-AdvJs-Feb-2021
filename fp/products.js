@@ -122,29 +122,56 @@ describe('Filter', function(){
             return result;
         }
 
-        describe('costly products [cost > 50]', function(){
+        function negate(predicate){
+            return function(p){
+                return !predicate(p);
+            };
+        }
+
+        describe('products by cost', function(){
             var costlyProductPredicate = function(p){
                 return p.cost > 50;
             };
-            var costlyProducts = filter(products, costlyProductPredicate);
-            console.table(costlyProducts);
+            describe('costly products [cost > 50]', function(){
+                var costlyProducts = filter(products, costlyProductPredicate);
+                console.table(costlyProducts);
+            });
+
+            describe('affordable products', function(){
+                var affordableProductPredicate = negate(costlyProductPredicate);
+                var affordableProducts = filter(products, affordableProductPredicate);
+                console.table(affordableProducts);
+            })
         });
 
-        describe('affordable products', function(){
-
-        })
-
-        describe('understocked products [units < 50]', function(){
+        describe('Products by units', function(){
             var underStockedProductPredicate = function(p){
                 return p.units < 50;
             };
-            var underStockedProducts = filter(products, underStockedProductPredicate);
-            console.table(underStockedProducts)
-        });
+            describe('understocked products [units < 50]', function(){
+                var underStockedProducts = filter(products, underStockedProductPredicate);
+                console.table(underStockedProducts)
+            });
 
-        describe('wellstocked products', function(){
-            
+            describe('wellstocked products', function(){
+                var wellStockedProductPredicate = negate(underStockedProductPredicate);
+                var wellStockedProducts = filter(products, wellStockedProductPredicate);
+                console.table(wellStockedProducts);
+            })
         })
     });
 });
 
+describe('group', function(){
+    function group(/* .... */){
+
+    }
+
+    describe('products by category', function(){
+
+    });
+
+    describe('products by affordability (costly & affordable)', function(){
+
+    });
+})
