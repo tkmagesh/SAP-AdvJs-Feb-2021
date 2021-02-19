@@ -142,3 +142,47 @@ Inheritance
     Uses prototype hopping to resolve an attribute
         Prototype hopping happens ONLY when an attribute value is READ
         Prototype hopping DOESNOT happen when a new value is WRITTEN in the attribute
+
+    Truthy & Falsy
+    Falsy - 0, undefined, null, '', NaN, false
+    Truthy - everthing else
+
+ES6 (EcmaScript 6 / ES2015 / ESNext )
+1. let
+2. const
+3. Array destructuring
+4. Rest Operator (Array)
+5. Spread Operator (Array)
+6. Object destructuring
+7. Rest Operator (Object)
+8. Spread Operator (Object)
+9. default arguments
+10. arrow functions
+11. Symbol
+12. class & inheritance
+13. template string
+14. iterables
+    let range = {
+        from : 1,
+        to : 5
+    }
+    
+    range[Symbol.iterator] = function(){
+        return {
+            current : this.from,
+            last : this.to,
+            next(){
+                if (this.current <= this.last){
+                    return { done : false, value : this.current++}
+                } else {
+                    return { done : true }
+                }
+            }
+        };
+    }
+
+    for(let no of range)
+        console.log(no);
+
+15. generator functions
+        functions whose execution can be suspended and resumed

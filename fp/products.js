@@ -96,6 +96,14 @@ describe('Sort', function(){
 
 });
 
+function describeGroup(obj){
+    for(var key in obj){
+        describe('Key - [' + key + ']', function(){
+            console.table(obj[key]);
+        });
+    }
+}
+
 describe('Filter', function(){
     describe('Filter stationary products', function(){
         function filterStationaryProducts(){
@@ -122,18 +130,24 @@ describe('Filter', function(){
             return result;
         }
 
-        function negate(predicate){
+        /* function negate(predicate){
             return function(p){
                 return !predicate(p);
             };
-        }
+        } */
+
+        var negate = predicate => p => !predicate(p);
 
         describe('products by cost', function(){
+            /* 
             var costlyProductPredicate = function(p){
                 return p.cost > 50;
-            };
+            }; 
+            */
+            var costlyProductPredicate = p => p.cost > 50;
             describe('costly products [cost > 50]', function(){
-                var costlyProducts = filter(products, costlyProductPredicate);
+                //var costlyProducts = filter(products, costlyProductPredicate);
+                var costlyProducts = filter(products, p => p.cost > 50);
                 console.table(costlyProducts);
             });
 
@@ -163,15 +177,32 @@ describe('Filter', function(){
 });
 
 describe('group', function(){
-    function group(/* .... */){
-
+    function group(list, keySelectorFn){
+        var result = {};
+        for(var index = 0, count = list.length; index < count; index++){
+            var key = keySelectorFn(list[index]);
+            /* if (typeof result[key] === 'undefined') */
+            /* if (result.hasOwnProperty(key)) */
+            if (!result[key])
+                result[key] = [];
+            result[key].push(list[index]);
+        }
+        return result;
     }
 
     describe('products by category', function(){
-
+        var categoryKeySelector = function(p){
+            return p.category;
+        };
+        var productsByCategory = group(products, categoryKeySelector);
+        describeGroup(productsByCategory);
     });
 
     describe('products by affordability (costly & affordable)', function(){
-
+        var affordabilityKeySelector = function(p){
+            return p.cost > 50 ? 'costly' : 'affordable'
+        };
+        var productsByAffordability = group(products, affordabilityKeySelector);
+        describeGroup(productsByAffordability);
     });
 })
