@@ -46,12 +46,20 @@
         return p;
     }
 
+    /* 
     function addAsyncPromiseClient(x,y){
         console.log(`[@client] triggering the service`);
-        var p = addAsyncPromise(100,200);
+        var p = addAsyncPromise(x,y);
         p.then(function(result){ 
             console.log(`[@client] result = ${result}`);
         });
+    } 
+    */
+
+    async function addAsyncPromiseClient(x,y){
+        console.log(`[@client] triggering the service`);
+        var result = await addAsyncPromise(x,y);
+        console.log(`[@client] result = ${result}`);
     }
 
     globalThis['addAsyncPromiseClient'] = addAsyncPromiseClient;
