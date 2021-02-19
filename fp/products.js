@@ -96,4 +96,33 @@ describe('Sort', function(){
 
 });
 
+describe('Filter', function(){
+    describe('Filter stationary products', function(){
+        function filterStationaryProducts(){
+            var stationaryProducts = [];
+            for(var index = 0, count = products.length; index < count; index++){
+                if (products[index].category === 'stationary'){
+                    stationaryProducts.push(products[index]);
+                }
+            }
+            return stationaryProducts;
+        }
+        var stationaryProducts = filterStationaryProducts();
+        console.table(stationaryProducts);
+    });
+
+    describe('Any list by any criteria', function(){
+        function filter(/* .... */){
+            //fill in the blanks
+        }
+
+        describe('costly products [cost > 50]', function(){
+
+        });
+
+        describe('understocked products [units < 50]', function(){
+
+        });
+    });
+});
 
